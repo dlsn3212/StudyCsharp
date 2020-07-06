@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chap03", "Chap03", "{8A8FDA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chap02", "Chap02", "{878F84DF-E5AB-4AA1-89DC-3124ACC9EBC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringNumberConversion", "StringNumberConversion\StringNumberConversion.csproj", "{DF7FA6E2-28CF-4E3C-8B7C-80C7B862BC77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringNumberConversion", "StringNumberConversion\StringNumberConversion.csproj", "{DF7FA6E2-28CF-4E3C-8B7C-80C7B862BC77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumApp", "EnumApp\EnumApp.csproj", "{B7C572CC-529A-414A-B86B-6DF14DE0F80A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{DF7FA6E2-28CF-4E3C-8B7C-80C7B862BC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF7FA6E2-28CF-4E3C-8B7C-80C7B862BC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF7FA6E2-28CF-4E3C-8B7C-80C7B862BC77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7C572CC-529A-414A-B86B-6DF14DE0F80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C572CC-529A-414A-B86B-6DF14DE0F80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C572CC-529A-414A-B86B-6DF14DE0F80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C572CC-529A-414A-B86B-6DF14DE0F80A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{30C5C61B-05B6-45D0-B6E6-58CDD708FDF1} = {8A8FDA8F-9C64-43E2-B46D-74DABDDE1C1A}
 		{4E34DCA6-EDF6-4A93-B826-1E5FF641A41C} = {8A8FDA8F-9C64-43E2-B46D-74DABDDE1C1A}
 		{DF7FA6E2-28CF-4E3C-8B7C-80C7B862BC77} = {8A8FDA8F-9C64-43E2-B46D-74DABDDE1C1A}
+		{B7C572CC-529A-414A-B86B-6DF14DE0F80A} = {8A8FDA8F-9C64-43E2-B46D-74DABDDE1C1A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35AF7F9A-57D9-45E4-BE5A-8835D211C7CC}
