@@ -34,14 +34,14 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.GrdDivTbl = new MetroFramework.Controls.MetroGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.TxtDivision = new MetroFramework.Controls.MetroTextBox();
-            this.TxtNames = new MetroFramework.Controls.MetroTextBox();
-            this.BtnDelete = new MetroFramework.Controls.MetroButton();
-            this.BtnNew = new MetroFramework.Controls.MetroButton();
-            this.BtnSave = new MetroFramework.Controls.MetroButton();
             this.BtnCancel = new MetroFramework.Controls.MetroButton();
+            this.BtnSave = new MetroFramework.Controls.MetroButton();
+            this.BtnNew = new MetroFramework.Controls.MetroButton();
+            this.BtnDelete = new MetroFramework.Controls.MetroButton();
+            this.TxtNames = new MetroFramework.Controls.MetroTextBox();
+            this.TxtDivision = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -69,6 +69,8 @@
             // 
             // GrdDivTbl
             // 
+            this.GrdDivTbl.AllowUserToAddRows = false;
+            this.GrdDivTbl.AllowUserToDeleteRows = false;
             this.GrdDivTbl.AllowUserToResizeRows = false;
             this.GrdDivTbl.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.GrdDivTbl.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -97,6 +99,7 @@
             this.GrdDivTbl.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.GrdDivTbl.Location = new System.Drawing.Point(0, 0);
             this.GrdDivTbl.Name = "GrdDivTbl";
+            this.GrdDivTbl.ReadOnly = true;
             this.GrdDivTbl.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(119)))), ((int)(((byte)(53)))));
@@ -112,6 +115,7 @@
             this.GrdDivTbl.Size = new System.Drawing.Size(361, 370);
             this.GrdDivTbl.Style = MetroFramework.MetroColorStyle.Orange;
             this.GrdDivTbl.TabIndex = 0;
+            this.GrdDivTbl.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrdDivTbl_CellClick);
             // 
             // groupBox1
             // 
@@ -130,53 +134,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "상세";
             // 
-            // metroLabel1
+            // BtnCancel
             // 
-            this.metroLabel1.Location = new System.Drawing.Point(9, 16);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(100, 23);
-            this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "구분코드 : ";
-            this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancel.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.BtnCancel.Location = new System.Drawing.Point(288, 83);
+            this.BtnCancel.Name = "BtnCancel";
+            this.BtnCancel.Size = new System.Drawing.Size(87, 37);
+            this.BtnCancel.TabIndex = 5;
+            this.BtnCancel.Text = "취소";
+            this.BtnCancel.UseSelectable = true;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // metroLabel2
+            // BtnSave
             // 
-            this.metroLabel2.Location = new System.Drawing.Point(9, 45);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(100, 23);
-            this.metroLabel2.TabIndex = 1;
-            this.metroLabel2.Text = "이름 : ";
-            this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnSave.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.BtnSave.Location = new System.Drawing.Point(195, 83);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(87, 37);
+            this.BtnSave.TabIndex = 4;
+            this.BtnSave.Text = "저장";
+            this.BtnSave.UseSelectable = true;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // TxtDivision
+            // BtnNew
             // 
+            this.BtnNew.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.BtnNew.Location = new System.Drawing.Point(102, 83);
+            this.BtnNew.Name = "BtnNew";
+            this.BtnNew.Size = new System.Drawing.Size(87, 37);
+            this.BtnNew.TabIndex = 3;
+            this.BtnNew.Text = "신규";
+            this.BtnNew.UseSelectable = true;
+            this.BtnNew.Click += new System.EventHandler(this.BtnNew_Click);
             // 
+            // BtnDelete
             // 
-            // 
-            this.TxtDivision.CustomButton.Image = null;
-            this.TxtDivision.CustomButton.Location = new System.Drawing.Point(240, 1);
-            this.TxtDivision.CustomButton.Name = "";
-            this.TxtDivision.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.TxtDivision.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.TxtDivision.CustomButton.TabIndex = 1;
-            this.TxtDivision.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.TxtDivision.CustomButton.UseSelectable = true;
-            this.TxtDivision.CustomButton.Visible = false;
-            this.TxtDivision.Lines = new string[0];
-            this.TxtDivision.Location = new System.Drawing.Point(113, 16);
-            this.TxtDivision.MaxLength = 32767;
-            this.TxtDivision.Name = "TxtDivision";
-            this.TxtDivision.PasswordChar = '\0';
-            this.TxtDivision.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TxtDivision.SelectedText = "";
-            this.TxtDivision.SelectionLength = 0;
-            this.TxtDivision.SelectionStart = 0;
-            this.TxtDivision.ShortcutsEnabled = true;
-            this.TxtDivision.Size = new System.Drawing.Size(262, 23);
-            this.TxtDivision.TabIndex = 2;
-            this.TxtDivision.UseSelectable = true;
-            this.TxtDivision.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.TxtDivision.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.BtnDelete.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.BtnDelete.Location = new System.Drawing.Point(9, 83);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(87, 37);
+            this.BtnDelete.TabIndex = 2;
+            this.BtnDelete.Text = "삭제";
+            this.BtnDelete.UseSelectable = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // TxtNames
             // 
@@ -194,7 +194,7 @@
             this.TxtNames.CustomButton.Visible = false;
             this.TxtNames.Lines = new string[0];
             this.TxtNames.Location = new System.Drawing.Point(113, 45);
-            this.TxtNames.MaxLength = 32767;
+            this.TxtNames.MaxLength = 45;
             this.TxtNames.Name = "TxtNames";
             this.TxtNames.PasswordChar = '\0';
             this.TxtNames.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -203,54 +203,58 @@
             this.TxtNames.SelectionStart = 0;
             this.TxtNames.ShortcutsEnabled = true;
             this.TxtNames.Size = new System.Drawing.Size(262, 23);
-            this.TxtNames.TabIndex = 3;
+            this.TxtNames.TabIndex = 1;
             this.TxtNames.UseSelectable = true;
             this.TxtNames.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TxtNames.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // BtnDelete
+            // TxtDivision
             // 
-            this.BtnDelete.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.BtnDelete.Location = new System.Drawing.Point(9, 83);
-            this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(87, 37);
-            this.BtnDelete.TabIndex = 4;
-            this.BtnDelete.Text = "삭제";
-            this.BtnDelete.UseSelectable = true;
-            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
-            // BtnNew
             // 
-            this.BtnNew.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.BtnNew.Location = new System.Drawing.Point(102, 83);
-            this.BtnNew.Name = "BtnNew";
-            this.BtnNew.Size = new System.Drawing.Size(87, 37);
-            this.BtnNew.TabIndex = 4;
-            this.BtnNew.Text = "신규";
-            this.BtnNew.UseSelectable = true;
-            this.BtnNew.Click += new System.EventHandler(this.BtnNew_Click);
             // 
-            // BtnSave
+            this.TxtDivision.CustomButton.Image = null;
+            this.TxtDivision.CustomButton.Location = new System.Drawing.Point(240, 1);
+            this.TxtDivision.CustomButton.Name = "";
+            this.TxtDivision.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.TxtDivision.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TxtDivision.CustomButton.TabIndex = 1;
+            this.TxtDivision.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TxtDivision.CustomButton.UseSelectable = true;
+            this.TxtDivision.CustomButton.Visible = false;
+            this.TxtDivision.Lines = new string[0];
+            this.TxtDivision.Location = new System.Drawing.Point(113, 16);
+            this.TxtDivision.MaxLength = 45;
+            this.TxtDivision.Name = "TxtDivision";
+            this.TxtDivision.PasswordChar = '\0';
+            this.TxtDivision.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TxtDivision.SelectedText = "";
+            this.TxtDivision.SelectionLength = 0;
+            this.TxtDivision.SelectionStart = 0;
+            this.TxtDivision.ShortcutsEnabled = true;
+            this.TxtDivision.Size = new System.Drawing.Size(262, 23);
+            this.TxtDivision.TabIndex = 0;
+            this.TxtDivision.UseSelectable = true;
+            this.TxtDivision.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TxtDivision.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            this.BtnSave.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.BtnSave.Location = new System.Drawing.Point(195, 83);
-            this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(87, 37);
-            this.BtnSave.TabIndex = 4;
-            this.BtnSave.Text = "저장";
-            this.BtnSave.UseSelectable = true;
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // metroLabel2
             // 
-            // BtnCancel
+            this.metroLabel2.Location = new System.Drawing.Point(9, 45);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(100, 23);
+            this.metroLabel2.TabIndex = 1;
+            this.metroLabel2.Text = "이름 : ";
+            this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            this.BtnCancel.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.BtnCancel.Location = new System.Drawing.Point(288, 83);
-            this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(87, 37);
-            this.BtnCancel.TabIndex = 4;
-            this.BtnCancel.Text = "취소";
-            this.BtnCancel.UseSelectable = true;
-            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            // metroLabel1
+            // 
+            this.metroLabel1.Location = new System.Drawing.Point(9, 16);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(100, 23);
+            this.metroLabel1.TabIndex = 0;
+            this.metroLabel1.Text = "구분코드 : ";
+            this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DivMngForm
             // 

@@ -34,6 +34,7 @@
             this.MnuItemCodeMng = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.MnuItemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuItemBooksMng = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             this.MnuMng.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnuItemCodeMng,
             this.toolStripMenuItem1,
+            this.MnuItemBooksMng,
             this.MnuItemExit});
             this.MnuMng.Name = "MnuMng";
             this.MnuMng.Size = new System.Drawing.Size(62, 20);
@@ -78,6 +80,13 @@
             this.MnuItemExit.Size = new System.Drawing.Size(180, 22);
             this.MnuItemExit.Text = "끝내기(X)";
             this.MnuItemExit.Click += new System.EventHandler(this.MnuItemExit_Click);
+            // 
+            // MnuItemBooksMng
+            // 
+            this.MnuItemBooksMng.Name = "MnuItemBooksMng";
+            this.MnuItemBooksMng.Size = new System.Drawing.Size(180, 22);
+            this.MnuItemBooksMng.Text = "도서관리(B)";
+            this.MnuItemBooksMng.Click += new System.EventHandler(this.MnuItemBooksMng_Click);
             // 
             // MainForm
             // 
@@ -109,6 +118,7 @@
         private System.Windows.Forms.ToolStripMenuItem MnuItemCodeMng;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem MnuItemExit;
+        private System.Windows.Forms.ToolStripMenuItem MnuItemBooksMng;
     }
 }
 

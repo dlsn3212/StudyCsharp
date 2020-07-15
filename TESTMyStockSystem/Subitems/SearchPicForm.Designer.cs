@@ -1,6 +1,6 @@
 ﻿namespace TESTMyStockSystem.Subitems
 {
-    partial class SearchItemForm
+    partial class SearchPicForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,12 +34,11 @@
             this.BtnSearch = new MetroFramework.Controls.MetroButton();
             this.TxtSearch = new MetroFramework.Controls.MetroTextBox();
             this.GrdDataView = new System.Windows.Forms.DataGridView();
-            this.BackTile = new MetroFramework.Controls.MetroTile();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.map = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BackTile = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitPanel)).BeginInit();
@@ -67,7 +66,7 @@
             this.metroTabPage1.Name = "metroTabPage1";
             this.metroTabPage1.Size = new System.Drawing.Size(896, 412);
             this.metroTabPage1.TabIndex = 0;
-            this.metroTabPage1.Text = "관광지검색";
+            this.metroTabPage1.Text = "관광지위치";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             // 
             // SplitPanel
@@ -110,7 +109,6 @@
             this.TxtSearch.Size = new System.Drawing.Size(745, 35);
             this.TxtSearch.Style = MetroFramework.MetroColorStyle.Black;
             this.TxtSearch.TabIndex = 0;
-            this.TxtSearch.Text = "관광지명을 입력하세요";
             // 
             // GrdDataView
             // 
@@ -121,7 +119,6 @@
             this.GrdDataView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.title,
             this.fee,
-            this.content,
             this.addr,
             this.map});
             this.GrdDataView.Location = new System.Drawing.Point(0, 5);
@@ -130,6 +127,30 @@
             this.GrdDataView.RowTemplate.Height = 23;
             this.GrdDataView.Size = new System.Drawing.Size(887, 362);
             this.GrdDataView.TabIndex = 0;
+            // 
+            // title
+            // 
+            this.title.HeaderText = "관광지명";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // fee
+            // 
+            this.fee.HeaderText = "이용요금";
+            this.fee.Name = "fee";
+            this.fee.ReadOnly = true;
+            // 
+            // addr
+            // 
+            this.addr.HeaderText = "주소";
+            this.addr.Name = "addr";
+            this.addr.ReadOnly = true;
+            // 
+            // map
+            // 
+            this.map.HeaderText = "찾아가는길";
+            this.map.Name = "map";
+            this.map.ReadOnly = true;
             // 
             // BackTile
             // 
@@ -145,46 +166,16 @@
             this.BackTile.UseTileImage = true;
             this.BackTile.Click += new System.EventHandler(this.BackTile_Click);
             // 
-            // title
-            // 
-            this.title.HeaderText = "관광지명";
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
-            // 
-            // fee
-            // 
-            this.fee.HeaderText = "이용요금";
-            this.fee.Name = "fee";
-            this.fee.ReadOnly = true;
-            // 
-            // content
-            // 
-            this.content.HeaderText = "상세설명";
-            this.content.Name = "content";
-            this.content.ReadOnly = true;
-            // 
-            // addr
-            // 
-            this.addr.HeaderText = "주소";
-            this.addr.Name = "addr";
-            this.addr.ReadOnly = true;
-            // 
-            // map
-            // 
-            this.map.HeaderText = "찾아가는길";
-            this.map.Name = "map";
-            this.map.ReadOnly = true;
-            // 
-            // SearchItemForm
+            // SearchPicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(951, 580);
             this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.BackTile);
-            this.Name = "SearchItemForm";
+            this.Name = "SearchPicForm";
             this.Style = MetroFramework.MetroColorStyle.Green;
-            this.Text = "관광지 검색";
+            this.Text = "관광지 위치조회";
             this.Load += new System.EventHandler(this.SearchItemForm_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
@@ -208,7 +199,6 @@
         private MetroFramework.Controls.MetroButton BtnSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
         private System.Windows.Forms.DataGridViewTextBoxColumn fee;
-        private System.Windows.Forms.DataGridViewTextBoxColumn content;
         private System.Windows.Forms.DataGridViewTextBoxColumn addr;
         private System.Windows.Forms.DataGridViewTextBoxColumn map;
     }

@@ -13,9 +13,9 @@ using MetroFramework.Forms;
 
 namespace TESTMyStockSystem.Subitems
 {
-    public partial class SearchItemForm : MetroForm
+    public partial class SearchPicForm : MetroForm
     {
-        public SearchItemForm()
+        public SearchPicForm()
         {
             InitializeComponent();
         }
@@ -33,11 +33,11 @@ namespace TESTMyStockSystem.Subitems
             wc = new WebClient() { Encoding = Encoding.UTF8 };
             doc = new XmlDocument();
             StringBuilder str = new StringBuilder();
-            str.Append("http://openapi.yeongdo.go.kr:8081/openapi-data/service/rest/tour/list");
+            str.Append("http://openapi.yeongdo.go.kr:8081/openapi-data/service/rest/tour/imagelist");
             str.Append("?serviceKey=s1rgHWnQK8nox%2FpmSgOQTrGoD8DqilO164IlzS76sUM9IaJJmpr3L3gXS0bu4IeYgy4T%2FM6TtZABaISIwFZI3g%3D%3D");
             str.Append("&title=" + TxtSearch.Text);
             str.Append("&pageNo=1");
-            str.Append("&numOfRows=200");
+            str.Append("&numOfRows=1000");
 
             string xml = wc.DownloadString(str.ToString());
             doc.LoadXml(xml);
@@ -51,7 +51,7 @@ namespace TESTMyStockSystem.Subitems
                 foreach (XmlNode item in items)
                 {
                     GrdDataView.Rows.Add(item["name"].InnerText, item["fee"].InnerText,
-                                         item["content"].InnerText, item["address"].InnerText, item["map"].InnerText);
+                                         item["address"].InnerText, item["map"].InnerText);
                 }
             }
             catch (NullReferenceException ex)

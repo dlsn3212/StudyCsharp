@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using TESTMyStockSystem.Subitems;
 
 namespace TESTMyStockSystem
 {
@@ -22,16 +23,25 @@ namespace TESTMyStockSystem
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+
+
         }
 
         private void MtlSearchItem_Click(object sender, EventArgs e)
         {
-            //this.Visible = false;
+            this.Visible = false;
+            SearchItemForm searchItemForm = new SearchItemForm();
+            searchItemForm.Location = this.Location;
+            searchItemForm.ShowDialog();
+            this.Close();
+        }
 
-            //SearchItemForm searchItem = new SearchItemForm();
-            //searchItem.Location = this.Location;
-            //searchItem.ShowDialog();
-
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            SearchPicForm searchPicForm = new SearchPicForm();
+            searchPicForm.Location = this.Location;
+            searchPicForm.ShowDialog();
             this.Close();
         }
     }
