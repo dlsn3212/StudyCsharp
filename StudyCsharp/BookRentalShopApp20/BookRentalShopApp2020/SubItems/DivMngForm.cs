@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
-using System.Net.Http.Headers;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Forms;
 using MySql.Data.MySqlClient;
 
-namespace BookRentalShopApp20.Subitems
+namespace BookRentalShopApp2020.SubItems
 {
     public partial class DivMngForm : MetroForm
     {
-        readonly string strTblName = "divtbl";
-        BaseMode myMode = BaseMode.NONE;        //commons의 enum,최초는 기본상태
+        readonly string strTblName = "divTbl";
+
+        BaseMode myMode = BaseMode.NONE; // 기본 상태
         public DivMngForm()
         {
             InitializeComponent();
@@ -19,49 +25,49 @@ namespace BookRentalShopApp20.Subitems
 
         private void DivMngForm_Load(object sender, EventArgs e)
         {
-            UpdataData();
+            UpdateDate();
         }
 
-        private void UpdataData()
+        private void UpdateDate()
         {
             using (MySqlConnection conn = new MySqlConnection(Commons.CONNSTR))
             {
-                string strQuery = $"select Division,Names from {strTblName};";
+                string strQuery = $"SELECT Division,Names FROM {strTblName} ";
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandText = strQuery;
-
                 MySqlDataAdapter adapter = new MySqlDataAdapter(strQuery, conn);
-                //adapter가 connand parameter DataReader 다 가능
+                MySqlCommand cmd = new MySqlCommand();
                 DataSet ds = new DataSet();
-                adapter.Fill(ds, strTblName);
+                adapter.Fill(ds, "divTbl");
 
-                GrdDivTbl.DataSource = ds;
-                GrdDivTbl.DataMember = strTblName;
+                GrdDivtbl.DataSource = ds;
+                GrdDivtbl.DataMember = strTblName;
             }
-            SetColumnHeaders();     //열 제목줄 수정!
+
+            SetColumnHeaders();
+
         }
 
         private void SetColumnHeaders()
         {
             DataGridViewColumn column;
-            column = GrdDivTbl.Columns[0];
+
+            column = GrdDivtbl.Columns[0];
             column.Width = 100;
             column.HeaderText = "구분코드";
 
-            column = GrdDivTbl.Columns[1];
+            column = GrdDivtbl.Columns[1];
             column.Width = 150;
             column.HeaderText = "이름";
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            if(myMode != BaseMode.UPDATE)   //데이터열누르면 수정모드가 되므로!
+            if(myMode != BaseMode.UPDATE)
             {
                 MetroMessageBox.Show(this, "삭제할 데이터를 선택하세요", "알림");
                 return;
             }
+
             myMode = BaseMode.DELETE;
             SaveData();
             InitControls();
@@ -75,46 +81,44 @@ namespace BookRentalShopApp20.Subitems
             myMode = BaseMode.NONE;
         }
 
-
-        #region 삭제처리제거
+        #region 삭제처리 제거
         //private void DeleteProcess()
         //{
         //    try
         //    {
         //        using (MySqlConnection conn = new MySqlConnection(Commons.CONNSTR))
         //        {
-        //            conn.Open(); //using문사용시 자동으로 conn.close해줌 원래는 conn.close해줘야함!
+        //            conn.Open();
         //            MySqlCommand cmd = new MySqlCommand();
         //            cmd.Connection = conn;
         //            cmd.CommandText = "DELETE FROM divtbl " +
-        //                              "  WHERE Division = @Division ";
-        //            MySqlParameter paramDivision = new MySqlParameter(@"Division", MySqlDbType.VarChar);
+        //                                              "WHERE Division = @Division ";
+        //            MySqlParameter paramDivision = new MySqlParameter("@Division", MySqlDbType.VarChar);
         //            paramDivision.Value = TxtDivision.Text;
         //            cmd.Parameters.Add(paramDivision);
 
         //            var result = cmd.ExecuteNonQuery();
 
-
+        //            MetroMessageBox.Show(this, $"{result}건이 삭제되었습니다.", "삭제");
         //        }
         //    }
         //    catch (Exception ex)
         //    {
-        //        MetroMessageBox.Show(this, $"에러발생 {ex.Message}", "에러",
-        //                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        MetroMessageBox.Show(this, $"에러발생 {ex.Message}", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
         //    }
         //    finally
         //    {
-        //        UpdataData();
+        //        UpdateDate();
         //    }
         //}
         #endregion
-
         private void BtnNew_Click(object sender, EventArgs e)
         {
             TxtDivision.Text = TxtNames.Text = string.Empty;
             TxtDivision.ReadOnly = false;
-            myMode = BaseMode.INSERT;   //신규 입력 모드 변경
+            TxtDivision.Focus();
 
+            myMode = BaseMode.INSERT; // 신규 입력 모드
         }
 
         /// <summary>
@@ -124,12 +128,13 @@ namespace BookRentalShopApp20.Subitems
         {
             if (string.IsNullOrEmpty(TxtDivision.Text) || string.IsNullOrEmpty(TxtNames.Text))
             {
-                MetroMessageBox.Show(this, "빈값은 넣을 수 없습니다", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, "빈 값은 넣을 수 없습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(myMode == BaseMode.NONE)
+
+            if (myMode == BaseMode.NONE)
             {
-                MetroMessageBox.Show(this, "신규 등록시 신규 버튼을 눌러주세요", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "신규등록시 신규버튼을 눌러주세요", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -137,63 +142,64 @@ namespace BookRentalShopApp20.Subitems
             {
                 using (MySqlConnection conn = new MySqlConnection(Commons.CONNSTR))
                 {
-                    conn.Open(); //using문사용시 자동으로 conn.close해줌 원래는 conn.close해줘야함!
+                    conn.Open(); //using안쓰면 밑에 close해줘야함
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = conn;
-                    if (myMode == BaseMode.UPDATE)
+                    
+
+                    if(myMode == BaseMode.UPDATE)
                     {
                         cmd.CommandText = "UPDATE divtbl " +
-                                          "     SET Names = @Names " +
-                                          " WHERE Division = @Division ";
+                                                          "       SET Names = @Names " +
+                                                          " WHERE Division = @Division "; // UPDATE문
                     }
                     else if(myMode == BaseMode.INSERT)
                     {
-                        cmd.CommandText = " INSERT INTO " +
-                                          " divtbl (Division, Names) " +
-                                          " VALUES (@Division, @Names) ";
+                        cmd.CommandText = "INSERT INTO " +
+                                                         "    divtbl (Division, Names) " +
+                                                         " VALUES(@Division, @Names) ";
                     }
-                    
                     else if(myMode == BaseMode.DELETE)
                     {
                         cmd.CommandText = "DELETE FROM divtbl " +
-                                          "  WHERE Division = @Division ";
+                                                      "WHERE Division = @Division ";
                     }
 
-                    if(myMode == BaseMode.INSERT || myMode == BaseMode.UPDATE)
+                    if(myMode ==BaseMode.INSERT || myMode == BaseMode.UPDATE)
                     {
                         MySqlParameter paramNames = new MySqlParameter("@Names", MySqlDbType.VarChar, 45);
                         paramNames.Value = TxtNames.Text;
-                        cmd.Parameters.Add(paramNames);//delete문은 names가 없으므로 따로분기!
+                        cmd.Parameters.Add(paramNames);
                     }
-
-                   
+                    
+                    
                     MySqlParameter paramDivision = new MySqlParameter("@Division", MySqlDbType.VarChar);
                     paramDivision.Value = TxtDivision.Text;
                     cmd.Parameters.Add(paramDivision);
 
                     var result = cmd.ExecuteNonQuery();
+
                     if(myMode == BaseMode.INSERT)
                     {
-                        MetroMessageBox.Show(this, $"{result}건이 신규 입력되었습니다.", "신규입력");
+                        MetroMessageBox.Show(this, $"{result}건이 신규입력되었습니다.", "신규입력");
                     }
                     else if(myMode == BaseMode.UPDATE)
                     {
-                        MetroMessageBox.Show(this, $"{result}건이 수정되었습니다", "수정");
+                        MetroMessageBox.Show(this, $"{result}건이 수정되었습니다.", "수정");
                     }
-                    else if(myMode == BaseMode.DELETE)
+                    else if (myMode == BaseMode.DELETE)
                     {
-                        MetroMessageBox.Show(this, $"{result}건이 삭제되었습니다", "삭제");
+                        MetroMessageBox.Show(this, $"{result}건이 삭제되었습니다.", "삭제");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MetroMessageBox.Show(this, $"에러발생 {ex.Message}", "에러",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, $"에러발생 {ex.Message}", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                UpdataData();
+                UpdateDate();
             }
         }
 
@@ -208,16 +214,22 @@ namespace BookRentalShopApp20.Subitems
             InitControls();
         }
 
-        private void GrdDivTbl_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GrdDivtbl_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
-                DataGridViewRow data = GrdDivTbl.Rows[e.RowIndex];
+                DataGridViewRow data = GrdDivtbl.Rows[e.RowIndex];
                 TxtDivision.Text = data.Cells[0].Value.ToString();
                 TxtNames.Text = data.Cells[1].Value.ToString();
 
-                TxtDivision.ReadOnly = true;
-                myMode = BaseMode.UPDATE;   //수정 모드 변경
+                TxtDivision.ReadOnly = true; //pk는 바꾸면 난리나니까 바꾸지 못하게 설정
+                TxtDivision.Focus();
+                myMode = BaseMode.UPDATE; // 수정 모드 변경
             }
         }
     }

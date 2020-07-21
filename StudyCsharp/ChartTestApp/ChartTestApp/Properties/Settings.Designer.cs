@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BookRentalShopApp20.Properties
+namespace ChartTestApp.Properties
 {
 
 

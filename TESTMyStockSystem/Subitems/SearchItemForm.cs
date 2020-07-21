@@ -10,11 +10,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using MetroFramework.Forms;
+using CefSharp;
+using CefSharp.WinForms;
 
 namespace TESTMyStockSystem.Subitems
 {
     public partial class SearchItemForm : MetroForm
     {
+        ChromiumWebBrowser Browser;
+        string xstreet = "";
+        string ystreet = "";
+        string street = "";
         public SearchItemForm()
         {
             InitializeComponent();
@@ -45,14 +51,32 @@ namespace TESTMyStockSystem.Subitems
             XmlNodeList items = doc.GetElementsByTagName("item");
 
             GrdDataView.Rows.Clear();
+            GrdDataViewCon.Rows.Clear();
+
+
 
             try
             {
                 foreach (XmlNode item in items)
                 {
                     GrdDataView.Rows.Add(item["name"].InnerText, item["fee"].InnerText,
-                                         item["content"].InnerText, item["address"].InnerText, item["map"].InnerText);
+                                         item["usehour"].InnerText, item["address"].InnerText, item["map"].InnerText);
+                    GrdDataViewCon.Rows.Add(item["content"].InnerText);
+                    street = item["name"].InnerText;
+                    xstreet = item["xposition"].InnerText;
+                    ystreet = item["yposition"].InnerText;
                 }
+                Cef.Initialize(new CefSettings());
+                string queryaddr = "https://www.google.com/maps/search/";
+                if (street != string.Empty)
+                {
+                    queryaddr += street + "/" + "@" + ystreet + "," + xstreet;
+                }
+
+                Browser = new ChromiumWebBrowser(queryaddr);
+                this.panel.Controls.Add(Browser);
+
+
             }
             catch (NullReferenceException ex)
             {
@@ -81,6 +105,29 @@ namespace TESTMyStockSystem.Subitems
 
             this.Close();   //현재 form닫음
 
+        }
+
+        private void BtnSearch2_Click(object sender, EventArgs e)
+        {
+            //string street = TxtSearch2.Text;
+            //Cef.Initialize(new CefSettings());
+            //string queryaddr = "https://www.google.com/maps/search/";
+            //if (street != string.Empty)
+            //{
+            //    queryaddr += street + "/" + "@" + ystreet + "," + xstreet;
+            //}
+
+            //Browser = new ChromiumWebBrowser(queryaddr);
+            //this.panel.Controls.Add(Browser);
+            //StringBuilder queryaddr = new StringBuilder();
+            //queryaddr.Append("https://www.google.co.kr/maps/search/");
+
+            //if(street != string.Empty)
+            //{
+            //    queryaddr.Append(street + "/" + "@" + ystreet + "," + xstreet );
+            //}
+
+            //webBrowser.Navigate(queryaddr.ToString());
         }
     }
 }

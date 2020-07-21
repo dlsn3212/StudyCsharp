@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.MtlSearchItem = new MetroFramework.Controls.MetroTile();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // MtlSearchItem
@@ -41,38 +40,22 @@
             this.MtlSearchItem.Size = new System.Drawing.Size(246, 270);
             this.MtlSearchItem.Style = MetroFramework.MetroColorStyle.Green;
             this.MtlSearchItem.TabIndex = 0;
-            this.MtlSearchItem.Text = "관광지 검색";
+            this.MtlSearchItem.Text = "영도구";
             this.MtlSearchItem.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.MtlSearchItem.TileImage = global::TESTMyStockSystem.Properties.Resources.images;
             this.MtlSearchItem.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.MtlSearchItem.UseTileImage = true;
             this.MtlSearchItem.Click += new System.EventHandler(this.MtlSearchItem_Click);
             // 
-            // metroTile1
-            // 
-            this.metroTile1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.metroTile1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.metroTile1.Location = new System.Drawing.Point(288, 63);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(180, 140);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTile1.TabIndex = 1;
-            this.metroTile1.Text = "관광지 사진 조회 하기";
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.metroTile1.TileImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.metroTile1.UseTileImage = true;
-            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 473);
-            this.Controls.Add(this.metroTile1);
+            this.ClientSize = new System.Drawing.Size(321, 372);
             this.Controls.Add(this.MtlSearchItem);
             this.Name = "MainForm";
             this.Style = MetroFramework.MetroColorStyle.Green;
-            this.Text = "부산광역시 영도구_관광 정보";
+            this.Text = "부산광역시 관광";
             this.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
@@ -81,7 +64,6 @@
 
         #endregion
         private MetroFramework.Controls.MetroTile MtlSearchItem;
-        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }
 

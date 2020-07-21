@@ -1,4 +1,4 @@
-﻿namespace BookRentalShopApp20
+﻿namespace BookRentalShopApp2020
 {
     partial class MainForm
     {
@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.MnuMng = new System.Windows.Forms.ToolStripMenuItem();
+            this.관리MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuItemCodeMng = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.MnuItemExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,32 +40,31 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.White;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MnuMng});
+            this.관리MToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1240, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // MnuMng
+            // 관리MToolStripMenuItem
             // 
-            this.MnuMng.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.관리MToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnuItemCodeMng,
             this.toolStripMenuItem1,
             this.MnuItemBooksMng,
             this.MnuItemExit});
-            this.MnuMng.Name = "MnuMng";
-            this.MnuMng.Size = new System.Drawing.Size(62, 20);
-            this.MnuMng.Text = "관리(M)";
+            this.관리MToolStripMenuItem.Name = "관리MToolStripMenuItem";
+            this.관리MToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.관리MToolStripMenuItem.Text = "관리(&M)";
             // 
             // MnuItemCodeMng
             // 
             this.MnuItemCodeMng.Name = "MnuItemCodeMng";
             this.MnuItemCodeMng.Size = new System.Drawing.Size(180, 22);
-            this.MnuItemCodeMng.Text = "코드관리(C)";
-            this.MnuItemCodeMng.Click += new System.EventHandler(this.MnuItemCodeMng_Click);
+            this.MnuItemCodeMng.Text = "코드관리(&C)";
+            this.MnuItemCodeMng.Click += new System.EventHandler(this.MnuMng_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -76,16 +75,15 @@
             // 
             this.MnuItemExit.Name = "MnuItemExit";
             this.MnuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.MnuItemExit.ShowShortcutKeys = false;
             this.MnuItemExit.Size = new System.Drawing.Size(180, 22);
-            this.MnuItemExit.Text = "끝내기(X)";
+            this.MnuItemExit.Text = "끝내기(&X)";
             this.MnuItemExit.Click += new System.EventHandler(this.MnuItemExit_Click);
             // 
             // MnuItemBooksMng
             // 
             this.MnuItemBooksMng.Name = "MnuItemBooksMng";
             this.MnuItemBooksMng.Size = new System.Drawing.Size(180, 22);
-            this.MnuItemBooksMng.Text = "도서관리(B)";
+            this.MnuItemBooksMng.Text = "도서관리(&B)";
             this.MnuItemBooksMng.Click += new System.EventHandler(this.MnuItemBooksMng_Click);
             // 
             // MainForm
@@ -114,7 +112,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem MnuMng;
+        private System.Windows.Forms.ToolStripMenuItem 관리MToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MnuItemCodeMng;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem MnuItemExit;
