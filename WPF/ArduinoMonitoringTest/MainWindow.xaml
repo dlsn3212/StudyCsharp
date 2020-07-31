@@ -6,9 +6,39 @@
         xmlns:local="clr-namespace:ArduinoMonitoringTest"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
+        xmlns:iconpack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:d3="clr-namespace:InteractiveDataDisplay.WPF;assembly=InteractiveDataDisplay.WPF"
         Title="Arduino PhotoRegister" Height="650" Width="700">
+    
+    <!--최상단 아이콘 -->
+    <mah:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <iconpack:PackIconSimpleIcons Kind="Arduino" Foreground="White" Margin="7,7,0,0"/>
+        </DataTemplate>
+    </mah:MetroWindow.IconTemplate>
+    <!--최상단 아이콘 -->
+
+    <!-- 키보드 push 이벤트 Start-->
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="OpenCommandBinding_Executed"/>
+        <CommandBinding Command="SaveAs" Executed="SaveAsCommandBinding_Executed"/>
+        <CommandBinding Command="Close" Executed="FinishBinding_Executed"/>
+        <CommandBinding Command="Undo" Executed="StartBinding_Executed" />
+        <CommandBinding Command="Stop" Executed="StopBinding_Executed"/>
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Key="O" Modifiers="Control" Command="Open"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="SaveAs"/>
+        <KeyBinding Key="F4" Modifiers="Alt"  Command="Close"/>
+        <KeyBinding Key="S" Modifiers="Alt" Command="Undo"/>
+        <KeyBinding Key="T" Modifiers="Alt" Command="Stop"/>
+    </Window.InputBindings>
+    <!--키보드 push 이벤트 Finish-->
+
     <Grid>
+        <!--전체 그리드 나눔>-->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -21,18 +51,65 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <!--전체 그리드 나눔>-->
+        
         <Menu>
             <MenuItem Header="파일">
-                <MenuItem Header="열기    Ctrl+O"/>
-                <MenuItem Header="저장    Ctrl+S"/>
-                <MenuItem x:Name="MenuSubItemExit" Header="끝내기   Alt+F4" Click="MenuSubItemExit_Click"/>
+                <MenuItem x:Name="openFileClick" Header="열기" 
+                                    Click="openFileClick_Click" InputGestureText="Ctrl+O" >
+                    <MenuItem.Icon>
+                        <StackPanel Orientation="Horizontal">
+                            <iconpack:PackIconTypicons Kind="FolderOpen" Margin="3"
+                                                                              VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="저장" 
+                                    Click="MenuItem_Click_3"  InputGestureText="Ctrl+S" >
+                    <MenuItem.Icon>
+                        <StackPanel Orientation="Horizontal">
+                            <iconpack:PackIconTypicons Kind="Folder" Margin="3"
+                                                                              VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="MenuSubItemExit" Header="끝내기" 
+                                    Click="MenuSubItemExit_Click" InputGestureText="Alt+F4" >
+                    <MenuItem.Icon>
+                        <StackPanel Orientation="Horizontal">
+                            <iconpack:PackIconTypicons Kind="TimesOutline" Margin="3"
+                                                                              VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="시뮬레이션">
-                <MenuItem Header="시작    Alt+S" Click="MenuItem_Click"/>
-                <MenuItem Header="중지    Alt+T" Click="MenuItem_Click_1"/>
+                <MenuItem Header="시작" InputGestureText="Alt+S" Click="MenuItem_Click">
+                    <MenuItem.Icon>
+                        <StackPanel Orientation="Horizontal">
+                            <iconpack:PackIconMaterial Kind="PlayOutline" Margin="3"
+                                                                              VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="중지" InputGestureText="Alt+T" Click="MenuItem_Click_1">
+                    <MenuItem.Icon>
+                        <StackPanel Orientation="Horizontal">
+                            <iconpack:PackIconMaterial Kind="PlayPause" Margin="3"
+                                                                              VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="도움말">
-                <MenuItem Header="정보 ..." />
+                <MenuItem Header="정보 ..." Click="MenuItem_Click_2">
+                    <MenuItem.Icon>
+                        <StackPanel Orientation="Horizontal">
+                            <iconpack:PackIconMaterial Kind="InformationOutline" Margin="3"
+                                                                              VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
 
@@ -50,12 +127,13 @@
                 <ProgressBar x:Name="PgbPhotoRegistor" Width="377" Height="35"
                          Margin="5"/>
                 <TextBlock x:Name="LblPhotoRegistor" Width="100" Height="23" Margin="0" 
-                           Text="0"/>
+                                    TextAlignment="Center" Text="0"/>
             </StackPanel>
         </GroupBox>
 
         <RichTextBox x:Name="RtbLog" Width="390" Height="103" Margin="5"
-            Grid.Row="3" Grid.Column="0"/>
+            Grid.Row="3" Grid.Column="0" >
+        </RichTextBox>
 
         <GroupBox Header="포트" Margin="5"
                   Grid.Row="1" Grid.Column="1"
@@ -64,23 +142,25 @@
                 <ComboBox x:Name="CboSerialPort" Height="26" Margin="10,5" SelectionChanged="CboSerialPort_SelectionChanged"/>
                 <Button x:Name="BtnConnect" Height="40" Margin="10,5" Background="#FF8BBAF1" Content="CONNECT" Foreground="White" FontSize="20" Click="BtnConnect_Click"/>
                 <Button x:Name="BtnDisconnect" Height="40" Margin="10,5" Background="#FF8BBAF1" FontSize="20" Content="DISCONNECT" Foreground="White" Click="BtnDisconnect_Click"/>
-                <Button Height="98" Margin="10,5" Background="#FF8BBAF1" Content="PORT" FontSize="20" Foreground="White"/>
+                <Button x:Name="BtnPortValue" Height="98" Margin="10,5" Background="#FF8BBAF1" Content="PORT" FontSize="20" Foreground="White"
+                        VerticalAlignment="Center" />
             </StackPanel>
         </GroupBox>
-        <d3:Chart x:Name="ChtSensorValues" Width="573" Height="220" Margin="5"
-            Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <d3:Chart Width="573" Height="220" Margin="58,6,60,5"
+                   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                    BottomTitle="Time" LeftTitle="Photo Registor value">
+            <d3:LineGraph x:Name="linegraph"
+                          Description="Photo Registor value"
+                          Stroke="LightSkyBlue" StrokeThickness="4"/>
+        </d3:Chart>
 
         <Button Width="116" Height="40" Margin="0,5,40,7"
             Grid.Row="5"  Grid.Column="0"
                 HorizontalAlignment="Right"
-              Background="#FF8BBAF1" Content="VIEW ALL" Foreground="White" FontSize="15" />
+              Background="#FF8BBAF1" Content="VIEW ALL" Foreground="White" FontSize="15" Click="Button_Click" />
         <Button Width="116" Height="40" Margin="365,7,0,7" Grid.Row="5" 
                 HorizontalAlignment="Left"
               Background="#FF8BBAF1" Grid.ColumnSpan="2" Content="ZOOM" Foreground="White" FontSize="15"/>
-
-
-
-
 
 
     </Grid>

@@ -1,0 +1,64 @@
+﻿<mah:MetroWindow x:Class="ArduinoMonitoringTest.InfoProgram"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:ArduinoMonitoringTest"
+        mc:Ignorable="d"
+        Title="InfoProgram" Height="290" Width="580">
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" Executed="FinishBinding_Executed"/>
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Key="O" Command="Close"/>
+    </Window.InputBindings>
+
+    <Grid>
+        <!--전체 그리드 나눔>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <!--<전체 그리드 나눔 끝>-->
+
+        <Grid Grid.Column="0">
+            <Image Source="D:\Source\CsharpSource\StudyCsharp\WPF\ArduinoMonitoringTest\Resources\images.png"/>
+
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1.5*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                                Width="361" Height="17" 
+                                Text="제품 이름" Foreground="Gray"/>
+            <TextBlock Grid.Row="1"
+                                Width="361" Height="17"
+                                Text="버전" Foreground="Gray"/>
+            <TextBlock Grid.Row="2"
+                                Width="361" Height="17"
+                                Text="저작권" Foreground="Gray"/>
+            <TextBlock Grid.Row="3"
+                                Width="361" Height="17"
+                                Text="회사 이름" Foreground="Gray"/>
+            <TextBox Grid.Row="4" Margin="5"
+                             Text="설명"/>
+            <Button Grid.Row="5" Margin="5"
+                            Width="100" Height="20"
+                            HorizontalAlignment="Right" 
+                            Content="확인(O)" FontSize="9" Click="Button_Click"/>
+
+        </Grid>
+
+
+    </Grid>
+</mah:MetroWindow>

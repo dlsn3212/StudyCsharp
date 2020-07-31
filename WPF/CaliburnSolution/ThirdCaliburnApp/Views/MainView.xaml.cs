@@ -12,7 +12,9 @@ namespace ThirdCaliburnApp.Views
             InitializeComponent();
         }
 
-
-
+        private void Salary_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !Commons.IsNumeric(e.Text);
+        }
     }
 }
