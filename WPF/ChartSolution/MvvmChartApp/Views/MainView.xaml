@@ -1,0 +1,59 @@
+﻿<mah:MetroWindow x:Class="MvvmChartApp.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:local="clr-namespace:MvvmChartApp.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <mah:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <iconPacks:PackIconMaterial Kind="ChartAreaspline" Margin="5,7,0,0"/>
+        </DataTemplate>
+    </mah:MetroWindow.IconTemplate>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <StackPanel>
+                <Menu IsMainMenu="True">
+                    <MenuItem Header="_Chart">
+                        <MenuItem.Icon>
+                            <iconPacks:Material Kind="ChartBoxOutline"/>
+                        </MenuItem.Icon>
+                        <MenuItem x:Name="LoadLineChart" Header="Line Chart" >
+                            <MenuItem.Icon>
+                                <iconPacks:PackIconMaterial Kind="ChartLine" Margin="4"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="LoadPieChart" Header="Pie Chart" Margin="4">
+                            <MenuItem.Icon>
+                                <iconPacks:FontAwesome Kind="ChartPieSolid" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="LoadGaugeChart" Header="Gauge Chart" Margin="4">
+                            <MenuItem.Icon>
+                                <iconPacks:PackIconEntypo Kind="Gauge" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="ExitProgram" Header="_Exit" Margin="4">
+                            <MenuItem.Icon>
+                                <iconPacks:PackIconMaterial Kind="ExitToApp" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="_LiveChart"></MenuItem>
+                </Menu>
+            </StackPanel>
+        </Grid>
+        <Grid Background="AliceBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="1228*"/>
+            </Grid.ColumnDefinitions>
+            <ContentControl x:Name="ActiveItem" Grid.ColumnSpan="2" />
+            <!--<mah:ContentControlEx x:Name="ActiveItem"/>-->
+        </Grid>
+    </DockPanel>
+</mah:MetroWindow>
