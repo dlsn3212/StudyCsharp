@@ -13,5 +13,6 @@
                 <lvc:LineSeries Values="{Binding LineValues}" DataLabels = "True"/>
             </lvc:CartesianChart.Series>
         </lvc:CartesianChart>
+
     </Grid>
 </UserControl>
