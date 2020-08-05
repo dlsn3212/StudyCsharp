@@ -55,7 +55,7 @@ namespace MvvmArduino.ViewModels
             set
             {
                 lblConnectionTime = value;
-                NotifyOfPropertyChange(() => lblConnectionTime);                 //값 변경 알림
+                NotifyOfPropertyChange(() => LblConnectionTime);                 //값 변경 알림
             }
         }
 
@@ -79,7 +79,7 @@ namespace MvvmArduino.ViewModels
 
         }
 
-        private void Start()                                            //시뮬레이션 시작클릭이벤트
+        public void Start()                                            //시뮬레이션 시작클릭이벤트
         {
             IsSimulation = true;
             Timer.Interval =
@@ -89,10 +89,10 @@ namespace MvvmArduino.ViewModels
             //BtnDisconnect_Click(sender, e);
         }
 
-        private void BtnConnect()     //Connect클릭시
+        public void BtnConnect()     //Connect클릭시
         {
-            serial.Open();
-            LblConnectionTime.ToString = $"연결시간 : {DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
+            //serial.Open();
+            lblConnectionTime = $"연결시간 : {DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
             //BtnConnect.IsEnabled = false;
             //BtnDisconnect.IsEnabled = true;
         }
