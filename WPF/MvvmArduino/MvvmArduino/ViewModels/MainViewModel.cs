@@ -48,7 +48,7 @@ namespace MvvmArduino.ViewModels
         }
         #endregion
 
-        string lblConnectionTime;
+        string lblConnectionTime = "연결시간 : ";
         public string LblConnectionTime
         {
             get => lblConnectionTime;
@@ -82,17 +82,34 @@ namespace MvvmArduino.ViewModels
         public void Start()                                            //시뮬레이션 시작클릭이벤트
         {
             IsSimulation = true;
-            Timer.Interval =
             Timer.Interval = TimeSpan.FromMilliseconds(1000);    //시간간격 설정
             Timer.Tick += new EventHandler(Timer_Tick1);
             Timer.Start();
             //BtnDisconnect_Click(sender, e);
         }
 
+        string cboserialport;
+        public string CboSerialPort
+        {
+            get => cboserialport;
+            set
+            {
+                cboserialport = value;
+                NotifyOfPropertyChange(() => CboSerialPort);                 //값 변경 알림
+            }
+
+        }
+        public void InitCboSerialPort()
+        {
+           
+
+            //BtnConnect.IsEnabled = BtnDisconnect.IsEnabled = false;
+        }
+
         public void BtnConnect()     //Connect클릭시
         {
             //serial.Open();
-            lblConnectionTime = $"연결시간 : {DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
+            LblConnectionTime = $"연결시간 : {DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")}";
             //BtnConnect.IsEnabled = false;
             //BtnDisconnect.IsEnabled = true;
         }

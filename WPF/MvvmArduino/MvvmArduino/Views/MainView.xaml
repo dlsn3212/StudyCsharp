@@ -113,9 +113,10 @@
             </MenuItem>
         </Menu>
 
-        <TextBlock x:Name="LblConnectionTime" Width="271" Height="23" Margin="5,8,0,8" HorizontalAlignment="Left"
+        <TextBlock Text="{Binding LblConnectionTime}"  Width="271" Height="23" Margin="5,8,0,8" HorizontalAlignment="Left"
                    Grid.Row="1" Grid.Column="0"
-                   Text="연결시간:" />
+ />
+        <!--x:Name="LblConnectionTime"-->
         <TextBox x:Name="TxtSensorCount" Width="114" Height="30" Margin="5"
                  HorizontalAlignment="Right"
             Grid.Row="1" Grid.Column="0" Background="#FFB0B0B0"/>
