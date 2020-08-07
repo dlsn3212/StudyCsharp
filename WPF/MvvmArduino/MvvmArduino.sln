@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmChartApp", "..\ChartSol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartCaliburnApp", "..\CaliburnSolution\StartCaliburnApp\StartCaliburnApp.csproj", "{F1D6A26C-DFB2-44FB-9A68-BFE2617D9B70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondCaliburnApp", "..\CaliburnSolution\SecondClaiburnApp\SecondCaliburnApp.csproj", "{F8A5DCE5-6D43-48C1-A92B-F44C451B6EA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F1D6A26C-DFB2-44FB-9A68-BFE2617D9B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1D6A26C-DFB2-44FB-9A68-BFE2617D9B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1D6A26C-DFB2-44FB-9A68-BFE2617D9B70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A5DCE5-6D43-48C1-A92B-F44C451B6EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A5DCE5-6D43-48C1-A92B-F44C451B6EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A5DCE5-6D43-48C1-A92B-F44C451B6EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A5DCE5-6D43-48C1-A92B-F44C451B6EA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

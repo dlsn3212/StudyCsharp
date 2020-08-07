@@ -8,6 +8,8 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows.Threading;
 using System.ComponentModel;
+using MvvmArduino.Models;
+using MvvmArduino.Helpers;
 
 namespace MvvmArduino.ViewModels
 {
@@ -18,7 +20,7 @@ namespace MvvmArduino.ViewModels
         private short maxPhotoVal = 1023;                   //포터레지스터 max변수
 
 
-        List<SensorData> photoDatas = new List<SensorData>();
+        List<SensorDataModel> photoDatas = new List<SensorDataModel>();
 
         List<int> x = new List<int>();
 
@@ -29,24 +31,30 @@ namespace MvvmArduino.ViewModels
         public DispatcherTimer Timer = new DispatcherTimer();
         #endregion
 
-        public void LoadInfo()
+        public MainViewModel()
         {
-           // ActivateItem(new InfoViewModel());         //display<>~하는거랑 같음
+            // ActivateItem(new InfoViewModel());         //display<>~하는거랑 같음
+            PortNames = new BindableCollection<string>();
+            AddPortNames(PortNames);
         }
 
-        #region Base부분
-        public class SensorData
+        //콤보박스
+        private BindableCollection<string> portNames;
+        public BindableCollection<string> PortNames
         {
-            public DateTime Date { get; set; }
-            public ushort Value { get; set; }
-
-            public SensorData(DateTime date, ushort value)
+            get => portNames;
+            set
             {
-                Date = date;
-                Value = value;
+                portNames = value;
             }
         }
-        #endregion
+        private void AddPortNames(BindableCollection<string> list)
+        {
+            foreach(var item in SerialPort.GetPortNames())
+            {
+                list.Add(item);
+            }
+        }
 
         string lblConnectionTime = "연결시간 : ";
         public string LblConnectionTime
@@ -88,17 +96,7 @@ namespace MvvmArduino.ViewModels
             //BtnDisconnect_Click(sender, e);
         }
 
-        string cboserialport;
-        public string CboSerialPort
-        {
-            get => cboserialport;
-            set
-            {
-                cboserialport = value;
-                NotifyOfPropertyChange(() => CboSerialPort);                 //값 변경 알림
-            }
 
-        }
         public void InitCboSerialPort()
         {
            
