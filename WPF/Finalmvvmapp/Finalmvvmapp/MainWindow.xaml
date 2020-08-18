@@ -1,0 +1,68 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Finalmvvmapp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="Finalmvvmapp.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="1280" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <materialDesign:ColorZone
+                                  Mode="Custom"
+                                  Background="#FFB698EA"
+                                  Foreground="White"
+                                  Padding="16"> 
+            <StackPanel Orientation="Horizontal">
+                   <ToggleButton
+                                  Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                                  <TextBlock VerticalAlignment="Center" Margin="16 0 0 0">
+                                        테스트
+                                  </TextBlock>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <ToggleButton
+                              Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                              ToolTip="MaterialDesignFlatPrimaryToggleButton"
+                              IsChecked="false" Margin="953.001,18.075,292.999,649.925" Background="#FFD8CAF1" Height="Auto" Width="Auto">  
+            <materialDesign:PackIcon
+    Kind="NotificationsActive"
+    Height="21"
+    Width="21" Foreground="White" />
+        </ToggleButton>
+        <Separator HorizontalAlignment="Left" Height="17" Margin="988.167,26.167,0,0" VerticalAlignment="Top" Width="23.166"
+                   RenderTransformOrigin="0.5,0.5" Background="#FF838383">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform/>
+                    <RotateTransform Angle="90" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <materialDesign:Chip
+  Content="TEST"
+  IsDeletable="True"
+  DeleteClick="Close_OnClick"
+  ToolTip="Just a tool tip"
+  DeleteToolTip="Your friendly neighbor delete button" Margin="1011.333,18.075,0,649.925" Background="#12171717" Foreground="White" Width="248.991">
+            <materialDesign:Chip.Icon>
+                <Image
+      Source="cat.jpg"></Image>
+            </materialDesign:Chip.Icon>
+        </materialDesign:Chip>
+        <materialDesign:Card
+                          Background="#FFB698EA"
+                          Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                          Width="200"
+                          Padding="8"
+                          UniformCornerRadius="1" Margin="0,69,1080,0">
+            <TextBlock TextWrapping="Wrap"/>
+        </materialDesign:Card>
+        <Button
+                          Content="{materialDesign:PackIcon Kind=DesktopMacDashboard, Size=30}" 
+                          ToolTip="Icon" Margin="0,69,1080,594" Background="Transparent"
+                          BorderBrush="#FFB698EA" Height="Auto" />
+    </Grid>
+</Window>
